@@ -1,0 +1,43 @@
+.order {
+  width: 500px;
+  height: 300px;
+  background: #dfdfdf;
+  position: fixed;
+  top: 140px;
+  left: 35%;
+  .toglePopup {
+    position: relative;
+    button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      border: 1px solid #000;
+      width: 50px;
+      height: 50px;
+    }
+  }
+}
+
+.wrapper {
+  @apply p-2;
+  h1 {
+    @apply mt-6 text-center text-xl leading-tight tracking-tighter text-black dark:text-white;
+  }
+  p {
+    @apply p-2;
+  }
+  form {
+    @apply flex gap-2;
+  }
+  span {
+    // padding-top: 100px;
+  }
+}
+.done {
+  padding: 20px;
+  margin: 100px;
+  text-align: center;
+  a {
+    color: green;
+  }
+}

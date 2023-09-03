@@ -1,0 +1,19 @@
+.wrapper {
+  @apply rounded overflow-hidden shadow-lg w-[800px] flex items-center cursor-pointer;
+  justify-content: space-between;
+  transition: 0.3s all;
+  div {
+    @apply text-gray-700 text-base px-2 py-2;
+  }
+
+  .price {
+    @apply px-4 pt-4 pb-2;
+    span {
+      @apply inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2;
+    }
+  }
+
+  &:hover {
+    scale: 1.05;
+  }
+}

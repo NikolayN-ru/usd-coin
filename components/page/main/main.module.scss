@@ -1,0 +1,10 @@
+.wrapper {
+//   background-color: red;
+  width: 100%;
+    @apply flex flex-wrap ;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 100%;
+    justify-content: center;
+    align-items: center;
+}

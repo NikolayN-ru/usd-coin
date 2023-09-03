@@ -1,0 +1,21 @@
+.header {
+    width: 100%;
+    @apply flex gap-2 text-cyan-900 p-9 fixed z-10 top-0;
+    background: rgb(174, 174, 174, 0.8);
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    link {
+        @apply text-blue-500 hover:text-blue-800;
+        &:hover {
+            @apply text-orange-500;
+        }
+    }
+    .currency {
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgb(150, 150, 150);
+        }
+    }
+
+}
