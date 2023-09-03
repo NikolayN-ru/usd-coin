@@ -1,11 +1,13 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import useBearStore from "../../zustand/store";
-import s from "./cartItem.module.scss";
 import Btn from "../btn/btn";
 
-const CardItem: FC<any> = ({ id, title, price }) => {
-  const addCart = useBearStore((state) => state.addCart);
+import { iProduct } from "../../types/product.types";
 
+import s from "./cartItem.module.scss";
+
+const CardItem: FC<iProduct> = ({ id, title, price }) => {
+  const addCart = useBearStore((state) => state.addCart);
   return (
     <div className={s.wrapper}>
       <div>{title}</div>

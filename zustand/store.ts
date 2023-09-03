@@ -1,19 +1,24 @@
 import { create } from "zustand";
+import { iProduct } from "../types/product.types";
+
+interface iLiteProduct {
+  id: number;
+  title: string;
+  price: number;
+}
 
 interface UsersState {
-  setting: any;
   curency: "USD" | "COIN";
   togleCurrency: () => void;
   totalUSD: number;
   totalCOIN: number;
   buyCOIN: (count: number) => void;
-  buy: (currecny: any) => void;
-  cart: any[];
-  addCart: (candidate: any) => void;
+  buy: (options: { carrency: string; total: number }) => void;
+  cart: iLiteProduct[];
+  addCart: (candidate: iLiteProduct) => void;
 }
 
 const useBearStore = create<UsersState>((set) => ({
-  setting: null,
   curency: "USD",
   togleCurrency: () =>
     set((state) => ({ curency: state.curency === "USD" ? "COIN" : "USD" })),
@@ -29,16 +34,16 @@ const useBearStore = create<UsersState>((set) => ({
     set((state) => ({
       cart: [...state.cart, { ...candidate }],
     })),
-  buy: (options: any) =>
+  buy: ({ carrency, total }: { carrency: string; total: number }) =>
     set((state) => {
-      if (options.carrency == "USD") {
+      if (carrency == "USD") {
         return {
-          totalUSD: state.totalUSD - options.total,
+          totalUSD: state.totalUSD - total,
           cart: [],
         };
       }
       return {
-        totalCOIN: state.totalCOIN - options.total,
+        totalCOIN: state.totalCOIN - total,
         cart: [],
       };
     }),

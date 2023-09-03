@@ -1,13 +1,15 @@
 "use client";
-import React, { FC } from "react";
+import { FC } from "react";
 import CardItem from "../../cardItem/cardItem";
+
+import { iProduct, iProducts } from "../../../types/product.types";
+
 import s from "./main.module.scss";
 
-const Main: FC<any> = ({ products }) => {
-  console.log(products, "products");
+const Main: FC<iProducts> = ({ products }) => {
   return (
     <div className={s.wrapper}>
-      {products.map((item: any, id: number) => {
+      {products.map((item: iProduct, id: number) => {
         return <CardItem {...item} key={id} />;
       })}
     </div>

@@ -1,22 +1,26 @@
 "use client";
 import { FC, useState } from "react";
-import s from "./order.module.scss";
 import Link from "next/link";
 import Btn from "../../btn/btn";
 import useBearStore from "../../../zustand/store";
 
-const Order: FC<any> = ({ total, toglePopup }) => {
+import s from "./order.module.scss";
+
+const Order: FC<{ total: number; toglePopup: () => void }> = ({
+  total,
+  toglePopup,
+}) => {
   const [moment, setMoment] = useState<boolean>(false);
   const [done, setDone] = useState<boolean>(false);
-  const [carrency, setCyrency] = useState<string>('');
   const buy = useBearStore((state) => state.buy);
+  const [carrency, setCyrency] = useState<string>("");
 
   const Buy = () => {
     setMoment(true);
     setTimeout(() => {
       setMoment(false);
       setDone(true);
-      buy({carrency, total})
+      buy({ carrency, total });
     }, 3000);
   };
 
@@ -37,15 +41,15 @@ const Order: FC<any> = ({ total, toglePopup }) => {
                   id="contactChoice1"
                   name="contact"
                   value="email"
-                  onChange={()=> setCyrency('USD')}
-                  />
+                  onChange={() => setCyrency("USD")}
+                />
                 <label htmlFor="contactChoice1">USD</label>
                 <input
                   type="radio"
                   id="contactChoice1"
                   name="contact"
                   value="email"
-                  onChange={()=> setCyrency('COIN')}
+                  onChange={() => setCyrency("COIN")}
                 />
                 <label htmlFor="contactChoice1">COIN</label>
               </form>

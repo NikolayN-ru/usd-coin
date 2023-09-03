@@ -1,5 +1,5 @@
 "use client";
-import React, { FC, useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import useBearStore from "../../../zustand/store";
 import Btn from "../../btn/btn";
 import Order from "../order/order";
@@ -12,11 +12,9 @@ const Cart = () => {
   const curency = useBearStore((state) => state.curency);
   const buyCOIN = useBearStore((state) => state.buyCOIN);
 
-  //   const togleCurrency = useBearStore((store) => store.togleCurrency);
-
   const [totalBuy, setTotalBuy] = useState<number>(0);
-  const [total, setTotal] = useState<any>(0);
-  const [popup, setPopup] = useState<any>(false);
+  const [total, setTotal] = useState<number>(0);
+  const [popup, setPopup] = useState<boolean>(false);
 
   const toglePopup = () => {
     setPopup((prev: boolean) => !prev);
@@ -78,7 +76,7 @@ const Cart = () => {
 
 export default Cart;
 
-const ItemCart: FC<any> = ({ title, price }) => {
+const ItemCart: FC<{ title: string; price: number }> = ({ title, price }) => {
   return (
     <div className={s.items}>
       <div className="flow-root">
