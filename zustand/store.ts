@@ -35,12 +35,19 @@ const useBearStore = create<UsersState>((set) => ({
     })),
   buy: ({ carrency, total }: { carrency: string; total: number }) =>
     set((state) => {
-      console.log(carrency, 'carrency')
+      console.log(carrency, "carrency");
       if (carrency != "USD") {
-        return {
-          totalCOIN: state.totalCOIN - total,
-          cart: [],
-        };
+        if (state.totalCOIN - total > 0) {
+          return {
+            totalCOIN: state.totalCOIN - total,
+            cart: [],
+          };
+        } else {
+          alert(
+            "оплата не прошла - налостаточно средств / попробуйте другую валюту"
+          );
+          return {};
+        }
       }
       return {
         totalUSD: state.totalUSD - total,

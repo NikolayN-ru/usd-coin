@@ -71,7 +71,7 @@ const Order: FC<{ total: number; toglePopup: () => void }> = ({
       )}
       {done && (
         <div className={s.done}>
-          спасибо за оплату
+          продолжить покупки {" "}
           <Link href="/">на главную</Link>
         </div>
       )}
