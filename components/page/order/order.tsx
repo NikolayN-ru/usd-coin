@@ -37,6 +37,7 @@ const Order: FC<{ total: number; toglePopup: () => void }> = ({
             <div>
               <form action="">
                 <input
+                  checked
                   type="radio"
                   id="contactChoice1"
                   name="contact"

@@ -1,5 +1,4 @@
 import { create } from "zustand";
-import { iProduct } from "../types/product.types";
 
 interface iLiteProduct {
   id: number;
@@ -36,14 +35,14 @@ const useBearStore = create<UsersState>((set) => ({
     })),
   buy: ({ carrency, total }: { carrency: string; total: number }) =>
     set((state) => {
-      if (carrency == "USD") {
+      if (carrency !== "USD") {
         return {
-          totalUSD: state.totalUSD - total,
+          totalCOIN: state.totalCOIN - total,
           cart: [],
         };
       }
       return {
-        totalCOIN: state.totalCOIN - total,
+        totalUSD: state.totalUSD - total,
         cart: [],
       };
     }),

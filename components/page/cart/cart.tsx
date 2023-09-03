@@ -3,6 +3,7 @@ import { FC, useEffect, useState } from "react";
 import useBearStore from "../../../zustand/store";
 import Btn from "../../btn/btn";
 import Order from "../order/order";
+
 import s from "./cart.module.scss";
 
 const Cart = () => {
@@ -44,11 +45,11 @@ const Cart = () => {
           <span className="font-medium">сумма заказа: {total}</span>
         </div>
 
-        {(curency === "USD" ? totalUSD : totalCOIN) < total ? (
+        {cart.length ? (curency === "USD" ? totalUSD : totalCOIN) < total ? (
           "у вас не хватает денег на покупку"
         ) : (
           <Btn title="оформить заказ" func={toglePopup} />
-        )}
+        ): null}
 
         <div>
           <div className={s.buy}>
