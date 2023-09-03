@@ -35,7 +35,8 @@ const useBearStore = create<UsersState>((set) => ({
     })),
   buy: ({ carrency, total }: { carrency: string; total: number }) =>
     set((state) => {
-      if (carrency !== "USD") {
+      console.log(carrency, 'carrency')
+      if (carrency != "USD") {
         return {
           totalCOIN: state.totalCOIN - total,
           cart: [],

@@ -12,6 +12,7 @@ const Order: FC<{ total: number; toglePopup: () => void }> = ({
 }) => {
   const [moment, setMoment] = useState<boolean>(false);
   const [done, setDone] = useState<boolean>(false);
+  const [pay, setPay] = useState<boolean>(false);
   const buy = useBearStore((state) => state.buy);
   const [carrency, setCyrency] = useState<string>("");
 
@@ -37,12 +38,15 @@ const Order: FC<{ total: number; toglePopup: () => void }> = ({
             <div>
               <form action="">
                 <input
-                  checked
+                  // checked
                   type="radio"
                   id="contactChoice1"
                   name="contact"
                   value="email"
-                  onChange={() => setCyrency("USD")}
+                  onChange={() => {
+                    setCyrency("USD");
+                    setPay(true);
+                  }}
                 />
                 <label htmlFor="contactChoice1">USD</label>
                 <input
@@ -50,14 +54,18 @@ const Order: FC<{ total: number; toglePopup: () => void }> = ({
                   id="contactChoice1"
                   name="contact"
                   value="email"
-                  onChange={() => setCyrency("COIN")}
+                  onChange={() => {
+                    setCyrency("COIN");
+                    setPay(true);
+                  }}
                 />
                 <label htmlFor="contactChoice1">COIN</label>
               </form>
             </div>
           </div>
+
           <p>будет списано : {total}</p>
-          {!moment && <Btn func={Buy} title="оплатить" />}
+          {!moment && pay && <Btn func={Buy} title="оплатить" />}
           {moment && "идет опалата - ожидайте"}
         </div>
       )}
